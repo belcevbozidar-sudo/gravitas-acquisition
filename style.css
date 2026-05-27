@@ -2145,6 +2145,19 @@ footer {
         position: relative;
     }
 
+    /* Enforce header layout constraints to eliminate horizontal overflow */
+    .header-container {
+        padding: 0 16px;
+    }
+    
+    .btn-cta-nav {
+        display: none !important; /* Hide header CTA on mobile as primary buttons are everywhere */
+    }
+
+    .logo-text span {
+        display: none !important; /* Hide 'ACQUISITION' subtitle on mobile to give the logo breathing room */
+    }
+
     .section {
         padding: 60px 0;
     }
@@ -2172,6 +2185,21 @@ footer {
         font-size: 1rem;
         margin-bottom: 30px;
         line-height: 1.6;
+    }
+
+    /* Enforce vertical stacking of hero action buttons to prevent horizontal overflow */
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+        align-items: stretch;
+    }
+    
+    .hero-actions .btn {
+        width: 100% !important;
+        box-sizing: border-box;
+        text-align: center;
+        justify-content: center;
     }
 
     .section-header {
@@ -2299,15 +2327,5 @@ footer {
         padding: 12px 24px;
         font-size: 0.95rem;
         width: 100%; /* Make buttons full width for clean tapping */
-    }
-
-    .hero-actions {
-        flex-direction: column;
-        width: 100%;
-        gap: 10px;
-    }
-
-    .logo-text span {
-        display: none; /* Hide subtitle on tiny screens to avoid squishing */
     }
 }
