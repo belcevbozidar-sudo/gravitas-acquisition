@@ -38,20 +38,18 @@ function initROICalculator() {
 }
 
 function calculateROI() {
-    const V = parseInt(document.getElementById("avg-deal-slider").value); // Avg Deal Size (BGN)
-    const B = parseInt(document.getElementById("ads-budget-slider").value); // Monthly Ads Budget (BGN)
+    const V = parseInt(document.getElementById("avg-deal-slider").value); // Avg Deal Size (EUR)
+    const B = parseInt(document.getElementById("ads-budget-slider").value); // Monthly Ads Budget (EUR)
     
     // Updates slider indicator labels
-    document.getElementById("avg-deal-display").textContent = `${V.toLocaleString('bg-BG')} лв.`;
-    
-    const euroEquivalent = Math.round(B / 2);
-    document.getElementById("ads-budget-display").textContent = `${B.toLocaleString('bg-BG')} лв. (${euroEquivalent} €)`;
+    document.getElementById("avg-deal-display").textContent = `${V.toLocaleString('de-DE')} €`;
+    document.getElementById("ads-budget-display").textContent = `${B.toLocaleString('de-DE')} €`;
     
     // Mathematical variables:
-    // Our service cost is 2,000 € which is approximately 4,000 лв.
-    // Total investment over 2 months = 4,000 лв. (us) + 2 * monthly ad budget (B)
-    const serviceCostBGN = 4000;
-    const totalInvestment = serviceCostBGN + (2 * B);
+    // Our service cost is 2,000 €
+    // Total investment over 2 months = 2,000 € + 2 * B
+    const serviceCostEUR = 2000;
+    const totalInvestment = serviceCostEUR + (2 * B);
     
     // A. Breakeven contracts = Total Investment / Avg Deal size
     const breakevenVal = totalInvestment / V;
@@ -60,12 +58,12 @@ function calculateROI() {
     // B. Projected revenue assuming a conservative 10 closed contracts
     const projectedContractsCount = 10;
     const projectedRevenue = V * projectedContractsCount;
-    document.getElementById("proj-revenue").textContent = `${projectedRevenue.toLocaleString('bg-BG')} лв.`;
+    document.getElementById("proj-revenue").textContent = `${projectedRevenue.toLocaleString('de-DE')} €`;
     
     // C. Net ROI % = ((Revenue - Investment) / Investment) * 100
     const netProfit = projectedRevenue - totalInvestment;
     const roiPercentage = (netProfit / totalInvestment) * 100;
-    document.getElementById("net-roi").textContent = `${Math.round(roiPercentage).toLocaleString('bg-BG')}%`;
+    document.getElementById("net-roi").textContent = `${Math.round(roiPercentage).toLocaleString('de-DE')}%`;
 }
 
 
@@ -233,8 +231,8 @@ function validateQuizStep() {
         }
         
         // Alert if low budget
-        if (val === "Под 5 000 лв.") {
-            const confirmLow = confirm("Нашата придобиваща система е проектирана изключително за бизнеси със сделки над 5,000 лв. Сделки под този праг не оправдават високата ни цена за менажиране. Желаете ли все пак да кандидатствате?");
+        if (val === "Под 5 000 €") {
+            const confirmLow = confirm("Нашата придобиваща система е проектирана изключително за бизнеси със сделки над 5,000 €. Сделки под този праг не оправдават високата ни цена за менажиране. Желаете ли все пак да кандидатствате?");
             return confirmLow;
         }
     } else if (currentQuizStep === 3) {
