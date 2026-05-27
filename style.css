@@ -2120,6 +2120,7 @@ footer {
     
     .full-width-card {
         grid-column: span 2;
+        grid-template-columns: 1fr;
     }
     
     .guarantee-box {
@@ -2137,50 +2138,176 @@ footer {
 }
 
 @media (max-width: 768px) {
+    /* Prevent horizontal overflow on viewport completely */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+    }
+
     .section {
-        padding: 70px 0;
+        padding: 60px 0;
     }
     
     .hero {
-        padding-top: 110px;
-        padding-bottom: 60px;
+        padding-top: 100px;
+        padding-bottom: 50px;
+        min-height: auto;
     }
     
+    /* Elegant breathing spacing between titles and text */
     .hero-title {
-        font-size: 2.3rem;
+        font-size: 2.1rem;
+        margin-bottom: 16px;
+        letter-spacing: -0.02em;
     }
     
+    .hero-subtitle {
+        font-size: 1.15rem;
+        margin-bottom: 20px;
+        line-height: 1.5;
+    }
+    
+    .hero-desc {
+        font-size: 1rem;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+
+    .section-header {
+        margin-bottom: 40px;
+    }
+
     .section-header h2 {
-        font-size: 1.95rem;
+        font-size: 1.75rem;
+        margin-bottom: 12px;
+        letter-spacing: -0.01em;
+    }
+
+    .section-subtitle {
+        font-size: 1.05rem;
+        line-height: 1.6;
     }
     
     .offer-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
     
     .full-width-card {
         grid-column: span 1;
         grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 24px;
+    }
+
+    .full-width-math-box {
+        padding: 20px;
+        width: 100%;
     }
     
-    .calculator-container, .simulator-card, .quiz-box-wrapper {
+    /* Fix card paddings to prevent overflow */
+    .compare-card {
         padding: 24px;
+        border-radius: var(--radius-lg);
+    }
+
+    .calculator-container, .simulator-card, .quiz-box-wrapper {
+        padding: 20px;
+        border-radius: var(--radius-lg);
+        max-width: 100%;
+        box-sizing: border-box;
     }
     
     .quiz-selection-grid, .form-element-row {
         grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .quiz-selection-card {
+        padding: 16px;
+    }
+    
+    /* Constrain simulated screens to fit perfectly on small viewports */
+    .glass-dashboard-card {
+        padding: 20px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .simulator-screen {
+        max-width: 100%;
+        height: auto;
+        min-height: 340px;
+        box-sizing: border-box;
+    }
+
+    .phone-mock-container {
+        width: 100%;
+        max-width: 220px;
+        height: 290px;
+    }
+
+    .results-sub-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .guarantee-box {
+        padding: 30px 20px;
+        border-radius: var(--radius-lg);
+        gap: 30px;
+    }
+
+    .rotating-dashed-seal {
+        width: 150px;
+        height: 150px;
+    }
+
+    .seal-percent {
+        font-size: 1.7rem;
     }
     
     .footer-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
     
     .footer-bottom {
         flex-direction: column;
         text-align: left;
+        gap: 16px;
     }
     
     .footer-legal-disclaimer {
         text-align: left;
+    }
+}
+
+/* Specific micro-fixes for extremely small screens (iPhone SE, etc.) */
+@media (max-width: 380px) {
+    .hero-title {
+        font-size: 1.85rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.55rem;
+    }
+
+    .btn {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+        width: 100%; /* Make buttons full width for clean tapping */
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .logo-text span {
+        display: none; /* Hide subtitle on tiny screens to avoid squishing */
     }
 }
